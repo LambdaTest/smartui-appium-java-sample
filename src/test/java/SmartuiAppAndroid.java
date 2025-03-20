@@ -9,11 +9,14 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SmartUIAppAndroid {
+public class SmartuiAppAndroid {
     public static  String userName = System.getenv("LT_USERNAME") == null ? "YOUR_LT_USERNAME" // Add username here
             : System.getenv("LT_USERNAME");
     public static String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "YOUR_LT_ACCESS_KEY" // Add accessKey here
             : System.getenv("LT_ACCESS_KEY");
+    public static  String projectToken = System.getenv("PROJECT_TOKEN") == null ? "YOUR_PROJECT_TOKEN" // Add project token here
+            : System.getenv("PROJECT_TOKEN");
+
 
     public static void main(String[] args) throws Exception {
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -30,23 +33,18 @@ public class SmartUIAppAndroid {
         ltOptions.put("smartUI.project", "Real-Device-Project-Android");  // Enter your smartUI Project name
         caps.setCapability("lt:options", ltOptions);
 
-
+        Map<String, String> startConfig= new HashMap<>();
+        startConfig.put("projectToken", projectToken);
 
         AppiumDriver driver = new AppiumDriver(
                 new URL("https://"+userName+":"+accessKey+"@mobile-hub.lambdatest.com/wd/hub"), caps);
-        String projectToken = "<<enter-project-token>>";
-        String buildName = "<<enter-your-cutomised-build-name>>";
 
         SmartUIAppSnapshot smartUIAppSnapshot = new SmartUIAppSnapshot();
-        Map<String, String> startConfig= new HashMap<>();
-        startConfig.put("projectToken", projectToken);
-        startConfig.put("buildName", buildName);
-
         Map<String, String> screenshotConfig = new HashMap<>();
         screenshotConfig.put("deviceName","Google pixel 9");
         screenshotConfig.put("platform","Android 15");
         try{
-            smartUIAppSnapshot.start(startConfig);     //We can also call start w/o any param, values set from env vars
+            smartUIAppSnapshot.start(); //we can also call start w/o options it'll take projectToken from env var
             driver.findElement(AppiumBy.id("com.lambdatest.proverbial:id/color")).click();
             smartUIAppSnapshot.smartuiAppSnapshot(driver, "screenshot1", screenshotConfig);
             driver.findElement(AppiumBy.id("com.lambdatest.proverbial:id/Text")).click();
