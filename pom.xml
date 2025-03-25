@@ -20,14 +20,11 @@
             <artifactId>selenium-java</artifactId>
             <version>4.5.0</version>
         </dependency>
-
-
         <dependency>
             <groupId>com.github.lambdatest</groupId>
             <artifactId>lambdatest-tunnel-binary</artifactId>
             <version>1.0.10</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
@@ -43,6 +40,12 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-support</artifactId>
             <version>4.16.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.github.lambdatest/lambdatest-java-sdk -->
+        <dependency>
+            <groupId>io.github.lambdatest</groupId>
+            <artifactId>lambdatest-java-sdk</artifactId>
+            <version>1.0.8</version>
         </dependency>
         <dependency>
             <groupId>io.appium</groupId>
@@ -93,7 +96,6 @@
             <artifactId>rest-assured</artifactId>
             <version>4.3.0</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -116,6 +118,55 @@
     </build>
 
     <profiles>
+        <profile>
+            <id>smartuiAppAndroid</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>3.0.0</version>
+                        <executions>
+                            <execution>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                                <configuration>
+                                    <mainClass>SmartuiAppAndroid</mainClass>
+                                    <classpathScope>test</classpathScope>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>smartuiAppIos</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>3.0.0</version>
+                        <executions>
+                            <execution>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                                <configuration>
+                                    <mainClass>SmartuiAppIos</mainClass>
+                                    <classpathScope>test</classpathScope>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <profile>
             <id>android</id>
             <build>
