@@ -27,14 +27,7 @@ public class SmartuiAppAndroid {
         ltOptions.put("platformName", "Android");
         ltOptions.put("build", "Java - Android");
         ltOptions.put("name", "Sample Test Java-Android");
-        ltOptions.put("w3c", true);
-        ltOptions.put("video", true);
-        ltOptions.put("visual", true);
-        ltOptions.put("smartUI.project", "Real-Device-Project-Android");  // Enter your smartUI Project name
-        caps.setCapability("lt:options", ltOptions);
-
-        Map<String, String> startConfig= new HashMap<>();
-        startConfig.put("projectToken", projectToken);
+         caps.setCapability("lt:options", ltOptions);
 
         AppiumDriver driver = new AppiumDriver(
                 new URL("https://"+userName+":"+accessKey+"@mobile-hub.lambdatest.com/wd/hub"), caps);
@@ -44,7 +37,7 @@ public class SmartuiAppAndroid {
         screenshotConfig.put("deviceName","Google pixel 9");
         screenshotConfig.put("platform","Android 15");
         try{
-            smartUIAppSnapshot.start(); //we can also call start w/o options it'll take projectToken from env var
+            smartUIAppSnapshot.start();
             driver.findElement(AppiumBy.id("com.lambdatest.proverbial:id/color")).click();
             smartUIAppSnapshot.smartuiAppSnapshot(driver, "screenshot1", screenshotConfig);
             driver.findElement(AppiumBy.id("com.lambdatest.proverbial:id/Text")).click();
@@ -56,6 +49,7 @@ public class SmartuiAppAndroid {
         }
         finally {
             smartUIAppSnapshot.stop();
+            driver.quit();
         }
     }
 }
