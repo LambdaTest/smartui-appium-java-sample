@@ -27,7 +27,6 @@ public class SmartuiAppIos {
         ltOptions.put("name", "Sample RD Test Java-iOS");
         caps.setCapability("lt:options", ltOptions);
 
-
         AppiumDriver driver = new AppiumDriver(
                 new URL("https://"+userName+":"+accessKey+"@mobile-hub.lambdatest.com/wd/hub"), caps);
 

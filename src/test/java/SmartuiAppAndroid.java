@@ -31,7 +31,6 @@ public class SmartuiAppAndroid {
 
         AppiumDriver driver = new AppiumDriver(
                 new URL("https://"+userName+":"+accessKey+"@mobile-hub.lambdatest.com/wd/hub"), caps);
-
         SmartUIAppSnapshot smartUIAppSnapshot = new SmartUIAppSnapshot();
         Map<String, String> screenshotConfig = new HashMap<>();
         screenshotConfig.put("deviceName","Google pixel 9");
