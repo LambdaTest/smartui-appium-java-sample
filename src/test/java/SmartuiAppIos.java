@@ -25,14 +25,7 @@ public class SmartuiAppIos {
         ltOptions.put("platformName", "iOS");
         ltOptions.put("build", "Java - iOS");
         ltOptions.put("name", "Sample RD Test Java-iOS");
-        ltOptions.put("w3c", true);
-        ltOptions.put("video", true);
-        ltOptions.put("visual", true);
-        ltOptions.put("smartUI.project", "Real-Device-Project-iOS");  // Enter your smartUI Project name
         caps.setCapability("lt:options", ltOptions);
-
-        Map<String, String> startConfig= new HashMap<>();
-        startConfig.put("projectToken", projectToken);
 
         AppiumDriver driver = new AppiumDriver(
                 new URL("https://"+userName+":"+accessKey+"@mobile-hub.lambdatest.com/wd/hub"), caps);
@@ -42,7 +35,7 @@ public class SmartuiAppIos {
         screenshotConfig.put("deviceName","iPhone 16");
         screenshotConfig.put("platform","iOS 17");
         try{
-            smartUIAppSnapshot.start(startConfig); //We can also call start w/o options it'll take projectToken from env var
+            smartUIAppSnapshot.start();
             driver.findElement(AppiumBy.id("color")).click();
             smartUIAppSnapshot.smartuiAppSnapshot(driver, "screenshot1", screenshotConfig);
             Thread.sleep(3000);
@@ -56,6 +49,7 @@ public class SmartuiAppIos {
         }
         finally {
             smartUIAppSnapshot.stop();
+            driver.quit();
         }
     }
 
