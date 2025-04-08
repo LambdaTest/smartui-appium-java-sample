@@ -14,13 +14,17 @@ public class SmartuiAppIos {
             : System.getenv("LT_ACCESS_KEY");
     public static  String projectToken = System.getenv("PROJECT_TOKEN") == null ? "YOUR_PROJECT_TOKEN" // Add project token here
             : System.getenv("PROJECT_TOKEN");
+    public static String deviceName = System.getenv("DEVICE_NAME") == null ? ".*" // This will pick a random device for you
+      : System.getenv("DEVICE_NAME");
+    public static String app = System.getenv("APP") == null ? "lt://proverbial-ios" // Sample app
+      : System.getenv("APP");
 
 
     public static void main(String[] args) throws Exception {
         DesiredCapabilities caps = new DesiredCapabilities();
         Map<String, Object> ltOptions = new HashMap<>();
-        ltOptions.put("deviceName", ".*");
-        ltOptions.put("app", "lt://proverbial-ios");  // Enter your app url
+        ltOptions.put("deviceName", deviceName);
+        ltOptions.put("app", app);  // Enter your app url
         ltOptions.put("isRealMobile", true);
         ltOptions.put("platformName", "iOS");
         ltOptions.put("build", "Java - iOS");
