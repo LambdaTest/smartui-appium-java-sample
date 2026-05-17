@@ -1,4 +1,4 @@
-# Run SmartUI Appium Java Tests on TestMu AI (Formerly LambdaTest)
+﻿# Run SmartUI Appium Java Tests on TestMu AI (Formerly LambdaTest)
 
 <p align="center">
   <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
@@ -17,10 +17,10 @@ With TestMu AI (Formerly LambdaTest), you can run SmartUI Appium tests across re
 
 ### Prerequisites
 
-- [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or later
-- [Maven](https://maven.apache.org/) installed (can also use [Homebrew](https://brew.sh/) on Linux/macOS)
-- [Appium Java client library](https://github.com/appium/java-client)
-- A TestMu AI (Formerly LambdaTest) account — [sign up here](https://www.testmuai.com/register/)
+- Java 8 or later
+- Maven installed (can also use Homebrew on Linux/macOS)
+- Appium Java client library
+- A TestMu AI (Formerly LambdaTest) account — sign up here
 
 ### Setup
 
@@ -99,7 +99,7 @@ mvn test -P ios
 mvn test -P iosweb
 ```
 
-Test results are displayed on the [TestMu AI App Automation Dashboard](https://appautomation.lambdatest.com/build).
+Test results are displayed on the TestMu AI App Automation Dashboard.
 
 ### Local testing with TestMu AI Tunnel
 
